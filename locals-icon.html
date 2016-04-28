@@ -1,12 +1,11 @@
 <!--
 @license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+Copyright (c) 2016 A-labs. All rights reserved.
+/////////////////
+LOCALS
+/////////////////
 -->
+
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
@@ -14,17 +13,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../locals-style/locals-style.html">
 
 <!--
-An element providing a solution to no problem in particular.
+The Locals-icon can be used to display one of the icons from the locals-iconset. Use a big, small or normal as attribute to determine the size. Use "iconcolor="yourcolor" to determine the color of the icon.
 
 Example:
 
-    <locals-icon></locals-icon>
-
-Example:
-
-    <locals-icon>
-      <h2>Hello locals-icon</h2>
-    </locals-icon>
+    <locals-icon icon="plus" small></locals-icon>
+    <locals-icon icon="plus" iconcolor="blue"></locals-icon>
+    <locals-icon icon="plus" big iconcolor="green"></locals-icon>
 
 @demo demo/index.html
 @hero hero.svg
