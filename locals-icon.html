@@ -60,6 +60,13 @@ Example:
       --iron-icon-fill-color: var(--icon-color);
       }
 
+      .xxl {
+        display: block;
+        box-sizing: border-box;
+      --iron-icon-width: 150px;
+      --iron-icon-height: 150px;
+      }
+
       iron-icon svg {
         border: 1px solid red;
       }
@@ -86,7 +93,11 @@ Example:
     </iron-icon>
     </template>
 
-
+    <template is="dom-if" if="{{xxl}}">
+    <iron-icon class="xxl" icon="{{localsicon}}">
+      <content></content>
+    </iron-icon>
+    </template>
 
   </template>
 
@@ -125,6 +136,12 @@ Example:
           observer: '_notnormal'
         },
 
+        xxl: {
+          type: Boolean,
+          value: false,
+          observer: '_notnormal'
+        },
+
         iconcolor: {
           type: String,
           observer: '_iconcolor'
@@ -149,7 +166,7 @@ Example:
       },
 
       _notnormal:function(){
-        if (this.big | this.small) {
+        if (this.big | this.small | this.xxl) {
         this.normal = false;
         }
       },
