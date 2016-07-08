@@ -35,6 +35,15 @@ Example:
         --icon-color: var(--locals-grey2);
       }
 
+
+      .verysmall {
+        display: block;
+        box-sizing: border-box;
+      --iron-icon-width: 15px;
+      --iron-icon-height: 15px;
+      --iron-icon-fill-color: var(--icon-color);
+      }
+
       .small {
         display: block;
         box-sizing: border-box;
@@ -73,7 +82,11 @@ Example:
 
     </style>
 
-
+    <template is="dom-if" if="{{verysmall}}">
+    <iron-icon class="verysmall" icon="{{localsicon}}">
+      <content></content>
+    </iron-icon>
+    </template>
 
     <template is="dom-if" if="{{small}}">
     <iron-icon class="small" icon="{{localsicon}}">
@@ -136,6 +149,12 @@ Example:
           observer: '_notnormal'
         },
 
+        verysmall: {
+          type: Boolean,
+          value: false,
+          observer: '_notnormal'
+        },
+
         xxl: {
           type: Boolean,
           value: false,
@@ -166,7 +185,7 @@ Example:
       },
 
       _notnormal:function(){
-        if (this.big | this.small | this.xxl) {
+        if (this.big | this.small | this.verysmall | this.xxl) {
         this.normal = false;
         }
       },
