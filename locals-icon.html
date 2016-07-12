@@ -35,8 +35,7 @@ Example:
         --icon-color: var(--locals-grey2);
       }
 
-
-      .verysmall {
+      .veryverysmall {
         display: block;
         box-sizing: border-box;
       --iron-icon-width: 15px;
@@ -44,19 +43,27 @@ Example:
       --iron-icon-fill-color: var(--icon-color);
       }
 
+      .verysmall {
+        display: block;
+        box-sizing: border-box;
+      --iron-icon-width: 22px;
+      --iron-icon-height: 22px;
+      --iron-icon-fill-color: var(--icon-color);
+      }
+
       .small {
         display: block;
         box-sizing: border-box;
-      --iron-icon-width: 20px;
-      --iron-icon-height: 20px;
+      --iron-icon-width: 30px;
+      --iron-icon-height: 30px;
       --iron-icon-fill-color: var(--icon-color);
       }
 
       .normal {
         display: block;
         box-sizing: border-box;
-      --iron-icon-width: 32px;
-      --iron-icon-height: 32px;
+      --iron-icon-width: 50px;
+      --iron-icon-height: 50px;
       --iron-icon-fill-color: var(--icon-color);
       }
 
@@ -64,10 +71,18 @@ Example:
       .big {
         display: block;
         box-sizing: border-box;
-      --iron-icon-width: 50px;
-      --iron-icon-height: 50px;
+      --iron-icon-width: 70px;
+      --iron-icon-height: 70px;
       --iron-icon-fill-color: var(--icon-color);
       }
+
+      .xl {
+        display: block;
+        box-sizing: border-box;
+      --iron-icon-width: 100px;
+      --iron-icon-height: 100px;
+      }
+
 
       .xxl {
         display: block;
@@ -76,11 +91,15 @@ Example:
       --iron-icon-height: 150px;
       }
 
-      iron-icon svg {
-        border: 1px solid red;
-      }
 
     </style>
+
+
+    <template is="dom-if" if="{{veryverysmall}}">
+    <iron-icon class="veryverysmall" icon="{{localsicon}}">
+      <content></content>
+    </iron-icon>
+    </template>
 
     <template is="dom-if" if="{{verysmall}}">
     <iron-icon class="verysmall" icon="{{localsicon}}">
@@ -102,6 +121,12 @@ Example:
 
     <template is="dom-if" if="{{big}}">
     <iron-icon class="big" icon="{{localsicon}}">
+      <content></content>
+    </iron-icon>
+    </template>
+
+    <template is="dom-if" if="{{xl}}">
+    <iron-icon class="xl" icon="{{localsicon}}">
       <content></content>
     </iron-icon>
     </template>
@@ -137,11 +162,19 @@ Example:
         },
 
 
-        big: {
+        veryverysmall: {
           type: Boolean,
           value: false,
           observer: '_notnormal'
         },
+
+
+        verysmall: {
+          type: Boolean,
+          value: false,
+          observer: '_notnormal'
+        },
+
 
         small: {
           type: Boolean,
@@ -149,7 +182,13 @@ Example:
           observer: '_notnormal'
         },
 
-        verysmall: {
+        big: {
+          type: Boolean,
+          value: false,
+          observer: '_notnormal'
+        },
+
+        xl: {
           type: Boolean,
           value: false,
           observer: '_notnormal'
@@ -185,7 +224,7 @@ Example:
       },
 
       _notnormal:function(){
-        if (this.big | this.small | this.verysmall | this.xxl) {
+        if (this.verysmall | this.veryverysmall | this.small | this.big | this.xl | this.xxl) {
         this.normal = false;
         }
       },
